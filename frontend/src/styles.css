@@ -1,0 +1,23 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    font-display: swap;
+    /* This ensures text remains visible during font load */
+}
+
+/* root */
+:root {
+    --primary: #ff0052;
+    --secondary: #3a3a3a;
+    --third: #f2f2f2;
+}
+
+/* body */
+body {
+    padding-top: 80px; /* Adjust based on navbar height */
+    min-height: 100vh;
+    background-color: #ff4e4e; /* Dark background */
+  }

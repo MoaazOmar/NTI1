@@ -1,0 +1,20 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<header id="header">
+    <a routerLink="/" class="logo">Shop</a>
+    <ul class="nav">
+        <li><a routerLink="/"><i class="fa-solid fa-house"></i></a></li>
+        <li><a routerLink="/about">About</a></li>
+        <li><a routerLink="/shopping">Shopping</a></li>
+        <li><a routerLink="/contact">Contact</a></li>
+    </ul>
+    <ul class="util">
+        <li><i class="fa-solid fa-magnifying-glass" (click)="becameClicked($event)" ></i></li>
+        <li><a routerLink="/login"><i class="fa-solid fa-user"></i></a></li>
+        <li><a routerLink="/favorites"><i class="fa-regular fa-heart"></i></a></li>
+        <li><a routerLink="/cart"><i class="fa-solid fa-cart-shopping"></i>
+                <span class="number">8</span>
+            </a></li>
+    </ul>
+</header>
+<app-searchinput [isClicked]="isClicked"></app-searchinput>

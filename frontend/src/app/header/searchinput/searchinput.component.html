@@ -1,0 +1,18 @@
+<div class="container" *ngIf="isClicked">
+    <div class="search-container">
+      <input 
+        type="text" 
+        placeholder="Search..." 
+        class="search-input" 
+        (keyup)="onSearch($event)" 
+        [(ngModel)]="query">
+      <i class="fa-solid fa-magnifying-glass" (click)="search()"></i>
+    </div>
+    <ul *ngIf="suggestions.length">
+      <li *ngFor="let suggestion of suggestions">
+        <img [src]="suggestion.image" alt="Product Image" width="50">
+        <span>{{ suggestion.name }}</span>
+      </li>
+    </ul>
+  </div>
+  

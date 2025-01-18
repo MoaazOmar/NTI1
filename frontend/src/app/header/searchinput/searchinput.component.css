@@ -1,0 +1,107 @@
+.container {
+  position: fixed;
+  display: flex;
+  flex-direction: column; /* Stack children vertically */
+  justify-content: center;
+  z-index: 10200;
+  align-items: center;
+  width: fit-content;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.search-container {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+  position: relative; /* Change to relative for proper stacking */
+  width: 90vw; /* Allow for some margin on the sides */
+  max-width: 600px; /* Maximum width for larger screens */
+  top: 10px; /* Adjusted for better visibility */
+  animation: comeToDown 0.5s ease-out;
+  transition: all ease-in 0.5s;
+}
+
+@keyframes comeToDown {
+  from {
+      transform: translateY(-30px);
+      filter: blur(20px);
+  }
+  to {
+      transform: translateY(0);
+      filter: blur(0);
+  }
+}
+
+.search-input {
+  width: 100%; /* Full width to fit the container */
+  padding: 10px;
+  font-size: 16px;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.7); /* Slightly transparent */
+  border: 2px solid #444;
+  border-radius: 5px;
+  padding-right: 40px; /* Adjusted for icon */
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.search-input::placeholder {
+  color: #ffffff;
+  transition: all ease-in 0.4s;
+}
+
+.search-input:focus::placeholder {
+  color: var(--primary);
+}
+
+.search-input:focus {
+  border-color: #ff0052; /* Change to your preferred focus color */
+}
+
+.fa-magnifying-glass {
+  color: #fff;
+  position: absolute; /* Changed to absolute for better positioning */
+  right: 10px; /* Adjusted left position */
+  top: 50%; /* Center vertically */
+  transform: translateY(-50%); /* Correct for vertical centering */
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.fa-magnifying-glass:hover {
+  color: var(--primary);
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 5px 0 0 0; /* Spacing to connect with input */
+  border: 1px solid #ccc;
+  max-height: 200px;
+  overflow-y: auto;
+  position: relative; /* Change to relative for proper stacking */
+  width: 90vw; /* Responsive width */
+  max-width: 600px; /* Consistent with input width */
+  z-index: 10200;
+  background-color: #333; /* Background for better visibility */
+  border-radius: 5px; /* Rounded corners */
+}
+
+ul li {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  cursor: pointer;
+  color: #fff; /* Text color for suggestions */
+}
+
+ul li:hover {
+  background-color: rgba(255, 0, 82, 0.1); /* Highlight on hover */
+}
+
+ul li img {
+  margin-right: 10px;
+  border-radius: 5px; /* Optional: rounded images */
+}

@@ -1,0 +1,18 @@
+<!-- <input type="text" [(ngModel)]="searchQuery" placeholder="Search products..." /> -->
+
+<div class="product-grid">
+  <div *ngFor="let product of products" class="product-card">
+    <div class="card-image">
+      <img [src]="product.image" [alt]="product.name" />
+    </div>
+    <div class="card-content">
+      <h3 class="product-name">{{ product.name }}</h3>
+      <p class="product-description">{{ product.description }}</p>
+      <p class="product-price">${{ product.price }}</p>
+    </div>
+  </div>
+</div>
+
+<div class="pagination">
+  <button *ngFor="let page of totalPages" (click)="goToPage(page)" [disabled]="currentPage === page" class="page-btn">{{ page }}</button>
+</div>

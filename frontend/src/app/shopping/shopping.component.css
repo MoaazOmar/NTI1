@@ -1,0 +1,389 @@
+
+
+.carousel {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+}
+
+.carousel .list .item {
+    position: absolute;
+    inset: 0 0 0 0;
+}
+
+.carousel .list .item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.carousel .list .item .content {
+    position: absolute;
+    top: 14%;
+    width: 1140px;
+    max-width: 80%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding-right: 30%;
+    box-sizing: border-box;
+    text-shadow: 0 5px 10px #000;
+    color:rgb(250, 49, 49) ;
+}
+
+.carousel .list .item .content .author {
+    letter-spacing: 10px;
+    font-weight: bold;
+}
+
+.carousel .list .item .content .title, 
+.carousel .list .item .content .topic {
+    font-weight: bold;
+    font-size: 5em;
+    line-height: 1.3em;
+}
+
+.carousel .list .item .content .topic {
+    color: #f16f25;
+    text-transform: uppercase;
+    font-family: 'Poppins', sans-serif; /* Added sans-serif fallback */
+}
+.carousel .list .item .content .buttons {
+
+    display: grid;
+    grid-template-columns: repeat(2 , 130px);
+    grid-template-rows: 40px;
+    gap: 5px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+.carousel .list .item .content button{
+    background-color: white;
+    letter-spacing: 3px;
+    border: none;
+    font-family: 'Poppins', sans-serif; /* Added sans-serif fallback */
+    font-weight: 500;
+}
+.carousel .list .item .content button:nth-child(2){
+    background: transparent;
+    color: #ffc446;
+    border: 1px solid #eee;
+    font-weight: 1000;
+}
+.carousel .list .item:nth-child(1){
+    z-index: 1;
+}
+.carousel .list .item:nth-child(1)  .author,
+.carousel .list .item:nth-child(1)  .title,
+.carousel .list .item:nth-child(1)  .topic,
+.carousel .list .item:nth-child(1)  .desc,
+.carousel .list .item:nth-child(1)  .buttons {
+    transform: translateY(50px);
+    filter: blur(20px);  
+    opacity: 0; 
+    animation: showContent 0.5s 1s linear forwards 1;
+}
+@keyframes showContent {
+   to {
+    opacity : 1;
+    transform: translateY(0);
+    filter: blur(0);
+   } 
+}
+.carousel .list .item:nth-child(1) .author {
+    animation-delay:1.2s ;
+}
+.carousel .list .item:nth-child(1) .title {
+    animation-delay:1.4s ;
+}
+.carousel .list .item:nth-child(1) .topic {
+    animation-delay:1.6s ;
+}
+
+.carousel .list .item:nth-child(1) .buttons {
+    animation-delay:1.8s ;
+}
+
+
+/********************---------------------Thubmnail--------------------***************************/
+.thumnail{
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    width: max-content;
+    z-index: 100;
+    display: flex;
+    gap: 20px;
+}
+.thumnail .item{
+    width: 150px;
+    height: 220px;
+    flex-shrink: 0;
+    position: relative;
+    
+}
+.thumnail .item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+}
+.thumnail .item .content {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    left: 10px;
+    color: #ff5e00;
+}
+.thumnail .item .content .title {
+    font-weight: bold;
+}
+
+/*************************-------------------------for-the-next-img-displaying------------------------***************************/
+.carousel.next .list .item:nth-child(1) img{
+  width: 150px;
+  height: 220px;
+  position: absolute;
+  left: 50%;
+  bottom: 50px;
+  border-radius: 20px;
+  animation: showImage 0.5s  linear  forwards ;
+}
+ @keyframes showImage {
+    to{
+        width:100%;
+        height:100%;
+        left: 0;
+        bottom: 0;
+        border-radius: 0;
+    }
+ }
+
+ .carousel.next .thumnail .item:nth-last-child(1){
+    width: 0;
+    overflow: hidden;
+    animation: showThumbnail 0.5s linear 1 forwards;
+ }
+ @keyframes showThumbnail {
+    to {
+        width: 150px;
+    }
+ }
+
+ .carousel.next .thumnail{
+    transform: translateX(150px);
+    animation: transferThumbnail 0.5s linear 1 forwards;
+ }
+ @keyframes transferThumbnail {
+    to {
+        transform:  translateX(0)
+    }
+ }  
+ /********************************************--for-prev-displaying--********************************/
+ .carousel.prev .list .item:nth-child(2){
+    z-index: 2;
+ }
+ .carousel.prev .list .item:nth-child(2) img {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    animation: outImage 0.5s linear 1 forwards;
+ }
+ @keyframes outImage {
+    to {
+        width: 150px;
+        height: 220px;
+        border-radius: 20px;
+        left: 50%;
+        bottom: 20px;
+    }
+ }
+ .carousel.prev .thumnail .item:nth-child(1){
+    width: 0;
+    overflow: hidden;
+    opacity: 0;
+    animation: showThumbnail 0.5s linear 1 forwards;
+ }
+
+.carousel.prev .list .item:nth-child(2) .author,
+.carousel.prev .list .item:nth-child(2) .title,
+.carousel.prev .list .item:nth-child(2) .topic, 
+.carousel.prev .list .item:nth-child(2) .desc,  
+.carousel.prev .list .item:nth-child(2) .buttons{
+    animation: contentOut 1.5s linear 1 forwards;
+} 
+@keyframes contentOut{
+    to{
+        transform: translateY(-150px);
+        filter: blur(20px);
+        opacity: 0;
+    }
+}
+ /********************************************----Time-animation----*********************************/
+ .time{
+    width: 0%;
+    height: 5px;
+    background-color: #ff5e00;
+    position: absolute;
+    z-index: 100;
+    top: 0;
+    left: 0;
+ }
+ 
+ .carousel.next .time,
+ .carousel.prev .time{
+     animation: runningTime 1s linear 1 forwards;
+ }
+ @keyframes runningTime{
+     from{ width: 100%}
+     to{width: 0}
+ }
+ @media screen and (max-width: 678px) {
+    .carousel .list .item .content{
+        padding-right: 0;
+    }
+    .carousel .list .item .content .title{
+        font-size: 30px;
+    }
+}
+.indicators {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 100;
+}
+
+/********************************************----buttons styles----*********************************/
+ .arrows{
+    position: absolute;
+    top: 80%;
+    right: 52%;
+    width: 300px;
+    max-width: 30%;
+    display: flex;
+    gap: 10px;
+ }
+ .arrows button {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color:#eb670f;
+    border: none;
+    font-family: monospace;
+    color: white;
+    font-weight: bold;
+    font-size: large;
+    transition: 0.5s;
+    cursor: pointer;
+    z-index: 100;
+ }
+ .arrows button:hover{
+    color:#eb670f ;
+    background-color:white ;
+ }
+ .carousel .prev .arrows button,
+ .carousel .next .arrows button {
+    pointer-events: none;
+ }
+ /* counter */
+ .counter {
+    position: absolute;
+    top: -60px;
+    left: 50%;
+    /* transform: translateX(-50%); */
+    width: 50px;
+    height: 50px;
+    z-index: 100; 
+    font-size: 50px; 
+    position:absolute; 
+    top:47.5px;
+    right: -195px;
+}
+
+.counter svg {
+    transform: rotate(-90deg);
+}
+
+.counter circle {
+    stroke-dasharray: 126; /* 2 * π * r (r=20) */
+    stroke-dashoffset: 0;
+    transition: stroke-dashoffset 8s linear;
+}
+
+.counter .countdown {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: bold;
+    color: #ff5e00;
+}
+
+/* Style for the <h3> elements containing icons or sparkle emoji */
+.carousel .list .item .content h3 {
+    font-size: 1.5em; /* Adjust size as needed */
+    font-weight: bold;
+    color: #ffffff;
+    text-shadow: 0 5px 10px #000;
+    margin-bottom: 10px; /* Add spacing below the heading */
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Space between icon and text */
+}
+
+/* Style for Font Awesome icons inside <h3> */
+.carousel .list .item .content h3 i {
+    font-size: 1.2em; /* Adjust icon size */
+    color: #ff5e00; /* Match the orange theme */
+}
+
+/* Style for the sparkle emoji inside <h3> */
+.carousel .list .item .content h3 span {
+    font-size: 1.2em; /* Adjust emoji size */
+    color: #ff5e00; /* Match the orange theme */
+}
+
+/* Apply the same animation as the rest of the content */
+.carousel .list .item:nth-child(1) .content h3 {
+    transform: translateY(50px);
+    filter: blur(20px);
+    opacity: 0;
+    animation: showContent 0.5s 1s linear forwards;
+}
+
+.carousel .list .item:nth-child(1) .content h3 {
+    animation-delay: 1s; /* Adjust delay to match other elements */
+}
+
+
+
+/* link  */
+.router{ 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    text-align: center;
+    color: white;
+    cursor: pointer;
+    display: block;
+    position: relative;
+    width: 100%;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    padding: 15px;
+    font-size: 39px;
+    transition: all ease-out;
+}
+.router a {
+    background-color: #ff0052;
+    text-decoration: none;
+    color: white;
+}
+.router a:hover{
+    color: #ff0052;
+    background-color: #ffffff;
+}

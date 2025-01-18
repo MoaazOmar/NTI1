@@ -1,0 +1,13 @@
+<div class="search-results">
+  <h2>Results for "{{ query }}"</h2>
+  <ul *ngIf="results.length; else noResults">
+    <li *ngFor="let product of results">
+      <img [src]="product.image" alt="Product Image" width="100">
+      <span>{{ product.name }}</span>
+      <span>{{product.price}}</span>
+    </li>
+  </ul>
+  <ng-template #noResults>
+    <p>No results found.</p>
+  </ng-template>
+</div>

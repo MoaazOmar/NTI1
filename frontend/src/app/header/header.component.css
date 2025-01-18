@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+
+/* Header Section */
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 100px;
+    background: transparent;
+    transition: all 0.7s ease-out;
+    z-index: 3000;
+}
+header.header-scrolled{
+    padding: 15px 100px;
+    background-color: rgba(255, 255, 255, 0.1) ;
+    backdrop-filter: blur(20px);
+}
+.logo {
+    position: relative;
+    font-size: 30px;
+    color: #fff;
+    letter-spacing: 2px;
+    font-weight: 800;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+}
+
+.nav li {
+    position: relative;
+    list-style: none;
+    margin: 0 20px;
+}
+
+.nav li a {
+    color: white;
+    text-decoration: none;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.7s ease-out;
+    font-weight: 300;
+    font-size: 1em;
+    letter-spacing: 1px;
+    padding: 10px;
+}
+
+.nav li a:hover {
+    color: var(--primary);
+}
+
+.util {
+    display: flex;
+    align-items: center;
+}
+
+.util li {
+    position: relative;
+    list-style: none;
+    margin: 0 10px;
+}
+
+.util li a {
+    text-decoration: none;
+    color: #fff;
+    transition: all 0.7s ease-out;
+}
+.util li i{
+    color: white; 
+    font-size: 21px; 
+    cursor: pointer;
+    transition: all 0.7s ease-out;
+}
+.util li i.fa-solid.fa-magnifying-glass:hover {
+    color: var(--primary) !important;
+}
+.util li a i {
+    font-size: 1.4em;
+}
+
+.util li a i:hover {
+    color: var(--primary);
+}
+
+.util li a .number {
+    position: absolute;
+    right: -1px;
+    bottom: 0px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--primary);
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.6em;
+    font-weight: 400;
+}

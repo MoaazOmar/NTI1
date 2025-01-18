@@ -1,0 +1,41 @@
+<form action="/" method="GET" class="filter-form">
+  <!-- Form content -->
+  <ul id="products-filter">
+    <li [class.active]="selectedCategory === 'all'" (click)="selectCategory('all')">All</li>
+    <li [class.active]="selectedCategory === 'Female'" (click)="selectCategory('Female')">Women</li>
+    <li [class.active]="selectedCategory === 'Male'" (click)="selectCategory('Male')">Men</li>
+    <li [class.active]="selectedCategory === 'Special'" (click)="selectCategory('Special')">Special</li>
+  </ul>
+  <input type="hidden" name="gender" [value]="selectedCategory">
+  <button type="submit" (click)="applyFilter($event)">Filter</button>
+</form>
+
+<!-- Product Container -->
+
+<div class="product-container">
+  <div *ngFor="let product of products; let i = index" class="product-item">
+    <span *ngIf="isHot(i)" class="hot">NEW<i class="fa fa-certificate" aria-hidden="true"></i></span>
+
+    <img [src]="product.image" alt="Product Image" />
+
+    <div class="product-info">
+      <h4>{{ product.name }}</h4>
+      <p>
+        <span *ngIf="product.price" class="cross">{{ product.price }}</span>
+        <span class="price">{{ product.price }}</span>
+      </p>
+    </div>
+    <form (ngSubmit)="addToCart(product)" method="POST">
+      <input type="number" name="amount" class="form-control mb-2" placeholder="Quantity" min="1" [(ngModel)]="product.amount">
+      <input type="hidden" name="name" class="form-control mb-2" [(ngModel)]="product.name">
+      <input type="hidden" name="price" class="form-control mb-2" [(ngModel)]="product.price">
+      <input type="hidden" name="productID" class="form-control mb-2" [(ngModel)]="product._id">
+      <input type="hidden" name="redirectTo" value="/">
+      <button type="submit" value="Add to Cart" class="btn btn-primary">Add to Cart</button>
+    </form>
+        </div>
+</div>
+
+<div class="loading-more">
+  <button (click)="loadMore()">Explore More</button>
+</div>
